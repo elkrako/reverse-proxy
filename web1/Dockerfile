@@ -1,4 +1,4 @@
-FROM node:16-alpine as build
+FROM node:16-alpine
 
 WORKDIR /app
 
@@ -8,12 +8,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
-
-FROM nginx:alpine
-
-COPY --from=build /app/.nuxt/dist/client /usr/share/nginx/html
-
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "dev"]
