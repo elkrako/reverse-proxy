@@ -1,14 +1,10 @@
 services:
   web1:
     build: ./web1
-    ports:
-      - "3000:3000"
     restart: unless-stopped
 
   web2:
     build: ./web2
-    ports:
-      - "3001:3000"
     restart: unless-stopped
 
   nginx:
