@@ -17,3 +17,14 @@ services:
       - web1
       - web2
     restart: unless-stopped
+
+  dnsmasq:
+    image: andyshinn/dnsmasq:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    restart: unless-stopped
